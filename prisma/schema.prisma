@@ -13,6 +13,8 @@ model binh_luan {
   hinh_id        Int?
   ngay_binh_luan DateTime?   @default(now()) @db.Timestamp(0)
   noi_dung       String?     @db.VarChar(255)
+  created_at     DateTime?   @default(now()) @db.Timestamp(0)
+  updated_at     DateTime?   @default(now()) @db.Timestamp(0)
   hinh_anh       hinh_anh?   @relation(fields: [hinh_id], references: [hinh_id], onDelete: NoAction, onUpdate: NoAction, map: "comment_image")
   nguoi_dung     nguoi_dung? @relation(fields: [nguoi_dung_id], references: [nguoi_dung_id], onDelete: NoAction, onUpdate: NoAction, map: "comment_user")
 
@@ -26,6 +28,8 @@ model hinh_anh {
   duong_dan     String      @db.VarChar(255)
   mo_ta         String?     @db.VarChar(255)
   nguoi_dung_id Int?
+  created_at    DateTime?   @default(now()) @db.Timestamp(0)
+  updated_at    DateTime?   @default(now()) @db.Timestamp(0)
   binh_luan     binh_luan[]
   nguoi_dung    nguoi_dung? @relation(fields: [nguoi_dung_id], references: [nguoi_dung_id], onDelete: NoAction, onUpdate: NoAction, map: "nguoi_dung_id")
   luu_anh       luu_anh[]
@@ -37,6 +41,8 @@ model luu_anh {
   nguoi_dung_id Int
   hinh_id       Int
   ngay_luu      DateTime?  @default(now()) @db.Timestamp(0)
+  created_at    DateTime?  @default(now()) @db.Timestamp(0)
+  updated_at    DateTime?  @default(now()) @db.Timestamp(0)
   hinh_anh      hinh_anh   @relation(fields: [hinh_id], references: [hinh_id], onDelete: NoAction, onUpdate: NoAction, map: "path_image")
   nguoi_dung    nguoi_dung @relation(fields: [nguoi_dung_id], references: [nguoi_dung_id], onDelete: NoAction, onUpdate: NoAction, map: "path_user")
 
@@ -52,6 +58,8 @@ model nguoi_dung {
   ho_ten        String      @db.VarChar(255)
   tuoi          Int?        @default(13)
   anh_dai_dien  String?     @db.VarChar(255)
+  created_at    DateTime?   @default(now()) @db.Timestamp(0)
+  updated_at    DateTime?   @default(now()) @db.Timestamp(0)
   binh_luan     binh_luan[]
   hinh_anh      hinh_anh[]
   luu_anh       luu_anh[]

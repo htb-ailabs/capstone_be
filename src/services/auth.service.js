@@ -72,6 +72,9 @@ const authService = {
   // list all user information
   userList: async (params) => {
     const users = await prisma.nguoi_dung.findMany();
+    if (users.length === 0) {
+      return `No user in database`;
+    }
     return users;
   },
 

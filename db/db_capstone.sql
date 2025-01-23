@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS `nguoi_dung` (
   `ho_ten` varchar(255) NOT NULL,
   `tuoi` int DEFAULT 13,
   `anh_dai_dien` VARCHAR(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`nguoi_dung_id`)
   
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -18,8 +20,10 @@ CREATE TABLE IF NOT EXISTS `hinh_anh` (
   `duong_dan` varchar(255) NOT NULL,  
   `mo_ta` varchar(255) DEFAULT NULL,
   `nguoi_dung_id` int DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`hinh_id`),
-  KEY `nguoi_dung_id` (`nguoi_dung_id`),
+  KEY `nguoi_dung_id` (`nguoi_dung_id`), 
   CONSTRAINT `image_user` FOREIGN KEY (`nguoi_dung_id`) REFERENCES `nguoi_dung` (`nguoi_dung_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -29,6 +33,8 @@ CREATE TABLE IF NOT EXISTS `binh_luan` (
   `hinh_id` int DEFAULT NULL,
   `ngay_binh_luan` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `noi_dung` VARCHAR(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`binh_luan_id`),
   KEY `nguoi_dung_id` (`nguoi_dung_id`),
   KEY `hinh_id` (`hinh_id`),
@@ -41,6 +47,8 @@ CREATE TABLE IF NOT EXISTS `luu_anh` (
   `nguoi_dung_id` int NOT NULL,
   `hinh_id` int NOT NULL,
   `ngay_luu` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`nguoi_dung_id`, `hinh_id`),
   KEY `nguoi_dung_id` (`nguoi_dung_id`),
   KEY `hinh_id` (`hinh_id`),

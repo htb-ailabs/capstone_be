@@ -14,9 +14,7 @@ const commentService = {
     });
 
     if (!comment) {
-      throw new BadRequestException(
-        `them binh luan khong thanh cong - service`
-      );
+      return `Add comment is unsuccessfully`;
     }
 
     return comment;
@@ -31,9 +29,7 @@ const commentService = {
     });
 
     if (comments.length === 0) {
-      throw new BadRequestException(
-        `không có bình luận nào cho hình có id tương ứng`
-      );
+      return `There is no comment for this image`;
     }
     return comments;
   },

@@ -10,7 +10,7 @@ const imageController = {
     try {
       console.log(req.body);
       const data = await imageService.addImage(req);
-      const resData = responseSuccess(data, `Them anh thanh cong`, 200);
+      const resData = responseSuccess(data, `API add image is OK`, 200);
       res.status(resData.code).json(resData);
     } catch (error) {
       const errorData = responseError(error.message, error.code, error.stack);
@@ -23,7 +23,7 @@ const imageController = {
   listImage: async (req, res, next) => {
     try {
       const data = await imageService.listImage();
-      const resData = responseSuccess(data, `get all images successfully`, 200);
+      const resData = responseSuccess(data, `API get all images is OK`, 200);
       res.status(resData.code).json(resData);
     } catch (error) {
       const errorData = responseError(error.message, error.code, error.stack);
@@ -36,11 +36,7 @@ const imageController = {
   nameImage: async (req, res, next) => {
     try {
       const data = await imageService.nameImage(req);
-      const resData = responseSuccess(
-        data,
-        `hinh anh theo ten duoc tim thay`,
-        200
-      );
+      const resData = responseSuccess(data, `API get image by name is OK`, 200);
       res.status(resData.code).json(resData);
     } catch (error) {
       const errorData = responseError(error.message, error.code, error.stack);
@@ -55,7 +51,7 @@ const imageController = {
       const data = await imageService.infoImage(req);
       const resData = responseSuccess(
         data,
-        `lấy thông tin ảnh thành công`,
+        `API get info image and created user is OK`,
         200
       );
       res.status(resData.code).json(resData);
@@ -70,7 +66,7 @@ const imageController = {
   checkSaveImage: async (req, res, next) => {
     try {
       const data = await imageService.checkSaveImage(req);
-      const resData = responseSuccess(data, `Hình đã được lưu`, 200);
+      const resData = responseSuccess(data, `API save image by id is OK`, 200);
       res.status(resData.code).json(resData);
     } catch (error) {
       const errorData = responseError(error.message, error.code, error.stack);
@@ -85,7 +81,7 @@ const imageController = {
       const data = await imageService.userSaveImage(req);
       const resData = responseSuccess(
         data,
-        `lay danh sach anh theo user thanh cong`,
+        `API get list of saved images is OK`,
         200
       );
       res.status(resData.code).json(resData);
@@ -103,7 +99,7 @@ const imageController = {
       const data = await imageService.userCreatedImage(req);
       const resData = responseSuccess(
         data,
-        `lay danh sach anh theo user thanh cong`,
+        `API get list images created by user is OK`,
         200
       );
       res.status(resData.code).json(resData);
@@ -118,11 +114,7 @@ const imageController = {
   deleteImage: async (req, res, next) => {
     try {
       const data = await imageService.deleteImage(req);
-      const resData = responseSuccess(
-        data,
-        `xóa hình ảnh theo id thành công`,
-        200
-      );
+      const resData = responseSuccess(data, `API delete image is OK`, 200);
       res.status(resData.code).json(resData);
     } catch (error) {
       const errorData = responseError(error.message, error.code, error.stack);

@@ -18,26 +18,27 @@ const imageService = {
   //GET danh sách ảnh về
   listImage: async () => {
     const images = await prisma.hinh_anh.findMany();
-    if (!images) {
-      throw new BadRequestException(`không có hình ảnh nào để tìm`);
+    if (images.length === 0) {
+      return `There are no images on database`;
     }
+
     return images;
   },
 
   // Get anh theo ten
   nameImage: async (req) => {
     // console.log(req.params);
-    const data = await prisma.hinh_anh.findFirst({
+    const image = await prisma.hinh_anh.findFirst({
       where: {
         ten_hinh: req.body.ten_hinh,
       },
     });
 
-    if (!data) {
-      throw new BadRequestException(`tên hình không tồn tại`);
+    if (image === null) {
+      return `There is no image with this name`;
     }
 
-    return data;
+    return image;
   },
 
   // GET thông tin ảnh và người tạo ảnh bằng id ảnh
@@ -56,8 +57,8 @@ const imageService = {
       },
     });
 
-    if (!image) {
-      throw new BadRequestException(`ảnh không tồn tại`);
+    if (image.length === 0) {
+      return `There is no image in database`;
     }
     return image;
   },
@@ -71,7 +72,7 @@ const imageService = {
     });
 
     if (!iamgeExist) {
-      throw new BadRequestException(`Ảnh chưa được lưu, kiểm tra lại`);
+      return `There is no information about saved image`;
     }
     return iamgeExist;
   },
@@ -85,7 +86,7 @@ const imageService = {
     });
     console.log(images);
     if (images.length === 0) {
-      throw new BadRequestException(`không tồn tại ảnh tương ứng id user`);
+      return `There is no information saved image with this user`;
     }
     return images;
   },
@@ -98,9 +99,9 @@ const imageService = {
         nguoi_dung_id: +req.params.id,
       },
     });
-    console.log(images);
+
     if (images.length === 0) {
-      throw new BadRequestException(`không tồn tại ảnh tương ứng id user`);
+      return `There is no image created by user`;
     }
     return images;
   },

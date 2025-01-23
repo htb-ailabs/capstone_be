@@ -8,7 +8,7 @@ const authController = {
   register: async (req, res, next) => {
     try {
       const users = await authService.register(req);
-      console.log(users);
+      // console.log(users);
 
       const resData = responseSuccess(users, `add user successfully`, 200);
 
@@ -36,7 +36,7 @@ const authController = {
   users: async (req, res, next) => {
     try {
       const data = await authService.userList();
-      const resData = responseSuccess(data, `get all users successfully`, 200);
+      const resData = responseSuccess(data, `API get all users is OK`, 200);
       res.status(resData.code).json(resData);
     } catch (error) {
       next(error);

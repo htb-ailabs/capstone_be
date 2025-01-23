@@ -10,7 +10,7 @@ const commentController = {
     try {
       console.log(req.body);
       const data = await commentService.addComment(req);
-      const resData = responseSuccess(data, `them binh luan thanh cong`, 200);
+      const resData = responseSuccess(data, `API add comment is OK`, 200);
       res.status(resData.code).json(resData);
     } catch (error) {
       const errorData = responseError(error.message, error.code, error.stack);
@@ -25,7 +25,7 @@ const commentController = {
       const data = await commentService.listComment(req);
       const resData = responseSuccess(
         data,
-        `lấy danh sách bình luận theo id ảnh thành công`,
+        `API get info of comment is OK`,
         200
       );
       res.status(resData.code).json(resData);
