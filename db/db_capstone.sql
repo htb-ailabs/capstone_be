@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `nguoi_dung` (
   `anh_dai_dien` VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (`nguoi_dung_id`)
   
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS `hinh_anh` (
   `hinh_id` int NOT NULL AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `hinh_anh` (
   PRIMARY KEY (`hinh_id`),
   KEY `nguoi_dung_id` (`nguoi_dung_id`),
   CONSTRAINT `image_user` FOREIGN KEY (`nguoi_dung_id`) REFERENCES `nguoi_dung` (`nguoi_dung_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS `binh_luan` (
 `binh_luan_id` int NOT NULL AUTO_INCREMENT,
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `binh_luan` (
   KEY `hinh_id` (`hinh_id`),
   CONSTRAINT `comment_user` FOREIGN KEY (`nguoi_dung_id`) REFERENCES `nguoi_dung` (`nguoi_dung_id`),
   CONSTRAINT `comment_image` FOREIGN KEY (`hinh_id`) REFERENCES `hinh_anh` (`hinh_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE IF NOT EXISTS `luu_anh` (
@@ -46,5 +46,5 @@ CREATE TABLE IF NOT EXISTS `luu_anh` (
   KEY `hinh_id` (`hinh_id`),
   CONSTRAINT `path_user` FOREIGN KEY (`nguoi_dung_id`) REFERENCES `nguoi_dung` (`nguoi_dung_id`),
   CONSTRAINT `path_image` FOREIGN KEY (`hinh_id`) REFERENCES `hinh_anh` (`hinh_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
